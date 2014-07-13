@@ -112,3 +112,28 @@ To update the repository from Github, pass the `--update-remotes` (or
 <span style="font-weight: bold" class="s1">    Updating</span> git repository `https://github.com/bjz/color-rs.git`
 <span style="font-weight: bold" class="s1">   Compiling</span> color v1.0.0 (https://github.com/bjz/color-rs.git)
 <span style="font-weight: bold" class="s1">   Compiling</span> hello-world v0.1.0</code></pre>
+
+# Test files
+
+You can run your tests with `cargo test`, which by default will assume that
+they are on your project's main file. In the example it would be
+`hello-world.rs`.
+
+If you want to change the place `cargo` looks for the tests you can specify it
+on your `Cargo.toml`.
+
+```toml
+[package]
+
+name = "hello-world"
+version = "0.1.0"
+authors = [ "wycats@example.com" ]
+
+[[bin]]
+
+name = "hello-world" # the name of the executable to generate
+
+[[test]]
+name = "my_tests"
+path = "tests/my_tests.rs
+```
