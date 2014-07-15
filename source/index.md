@@ -113,11 +113,16 @@ To update the repository from Github, pass the `--update-remotes` (or
 <span style="font-weight: bold" class="s1">   Compiling</span> color v1.0.0 (https://github.com/bjz/color-rs.git)
 <span style="font-weight: bold" class="s1">   Compiling</span> hello-world v0.1.0</code></pre>
 
-# Test files
+# Tests
 
-You can run your tests with `cargo test`, which by default will assume that
-they are on your project's main file. In the example it would be
-`hello-world.rs`.
+You can run your tests with `cargo test`, which by default will:
+
+* Compile your library's unit tests, which are in files reachable from
+  `lib.rs`. Any sections marked with `#[cfg(test)]` will be included.
+* Compile your library's integration tests, which are located in
+  `tests`. Files in `tests` load in your library by using `extern crate
+  <library-name>` like any other code that depends on it.
+* Compile your library's examples.
 
 If you want to change the place `cargo` looks for the tests you can specify it
 on your `Cargo.toml`.
@@ -135,5 +140,5 @@ name = "hello-world" # the name of the executable to generate
 
 [[test]]
 name = "my_tests"
-path = "tests/my_tests.rs
+path = "more_tests/my_tests.rs
 ```
